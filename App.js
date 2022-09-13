@@ -35,30 +35,16 @@ function App() {
   return (
     <div>
       <h2>Expense Tracker</h2>
-      <ExpenseItem
-        date={items[0].date}
-        title={items[0].title}
-        location={items[0].location}
-        price={items[0].amount}
-      ></ExpenseItem>
-      <ExpenseItem
-        date={items[1].date}
-        title={items[1].title}
-        location={items[1].location}
-        price={items[1].amount}
-      ></ExpenseItem>
-      <ExpenseItem
-        date={items[2].date}
-        title={items[2].title}
-        location={items[2].location}
-        price={items[2].amount}
-      ></ExpenseItem>
-      <ExpenseItem
-        date={items[3].date}
-        title={items[3].title}
-        location={items[3].location}
-        price={items[3].amount}
-      ></ExpenseItem>
+      {items.map((key) => {
+        return (
+          <ExpenseItem
+            date={key.date}
+            title={key.title}
+            location={key.location}
+            price={key.amount}
+          ></ExpenseItem>
+        );
+      })}
     </div>
   );
 }
@@ -66,15 +52,10 @@ function App() {
 export default App;
 
 
-//Here we are passing data in Expenseitems.js through props(properties)
-//here we are re using same copmonent to do so
-// previously we have only one list of expense , but now we have four list of expenses
-// to print them all we use four  "ExpenseItem" elements
-// here we are putting values dynamically i.e expense items are not build in html but we are trasfering from outside
-
-//here  date={items[0].date}   title={items[0].title}  location={items[0].location}   price={items[0].amount}
-//are basically attributes, these are different from HTML attributes, 
-//here we can make attributes dynamic
-// attribute name can be anything , but variable contain array and name of key in object should be same
-
-
+//.map() is the most effective way to loop for components
+//loop should be in { } because it is a js function
+//map() is returning <ExpenseItem> and in <ExpenseItem> we are passing attributes
+//example:  date==key,  {key.date}==value
+// key name should be same in JSX text content in ExpenseItem.js file
+//https://www.pluralsight.com/guides/how-to-implement-a-component-%22loop%22-with-react
+//read this article for more info
