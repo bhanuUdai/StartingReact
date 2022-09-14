@@ -1,18 +1,10 @@
 import "./ExpenseItem.css";
-
+import ExpenseDate from "./ExpenseDate";
 function ExpenseItem(prop) {
-  let month = prop.date.toLocaleString("en-US", { month: "long" });
-  let day = prop.date.toLocaleString("en-US", { day: "2-digit" });
-  let year = prop.date.toLocaleString("en-US", { year: "numeric" });
-
   return (
     <div className="expense-item">
       <div className="expense-item__description">
-        <div>
-          <div>{month}</div>
-          <div>{day}</div>
-          <div>{year}</div>
-        </div>
+        <ExpenseDate date={prop.date}></ExpenseDate>
         <h2>{prop.title} </h2>
         <h2 className="expense-item__description h2">{prop.location}</h2>
         <div className="expense-item__price">Rs {prop.price}</div>
@@ -23,17 +15,6 @@ function ExpenseItem(prop) {
 
 export default ExpenseItem;
 
-//here we are using a method toLocaleString() which make date user readable
-// insted of wrtting inside JSX we store them in variables and then put variable in jsx to keep code clean
-
-
-
-
-
-
-
-
-
-
-
-
+//Here in <ExpenseDate> we are using date attribute i.e date={prop.date} it has date in it which is in dynamic values
+//i.e in items array has object with date, it will store that date
+// this attribute will pass as argument to ExpenseDate component function
